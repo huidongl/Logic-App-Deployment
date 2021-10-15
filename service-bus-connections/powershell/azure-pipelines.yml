@@ -32,7 +32,7 @@ stages:
     - task: AzureResourceGroupDeployment@2
       name: SharedResourcesDeployment
       inputs:
-        azureSubscription: 'Azure Samples Subscription'
+        azureSubscription: 'Huidong Liu'
         action: 'Create Or Update Resource Group'
         resourceGroupName: $(resourceGroupName)
         location: $(location)
@@ -49,7 +49,7 @@ stages:
     - task: AzurePowerShell@4
       name: DeployLogicAppSample
       inputs:
-        azureSubscription: 'Azure Samples Subscription'
+        azureSubscription: 'Huidong Liu'
         ScriptType: 'FilePath'
         ScriptPath: '$(logicAppDeployScript)'
         FailOnStandardError: true
