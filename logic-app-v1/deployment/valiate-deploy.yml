@@ -103,10 +103,10 @@ stages:
 
         location: 'japaneast'
 
-        csmFile: '$(Pipeline.Workspace)/**/logic_createincident/template.json'
+        csmFile: '$(Pipeline.Workspace)/**/project_output/template.json'
 
-        csmParametersFile: '$(Pipeline.Workspace)/**/logic_createincident/parameters.json'
+        csmParametersFile: '$(Pipeline.Workspace)/**/project_output/parameters.json'
 
-        overrideParameters: '-inc_password tuydwoqfn'
+        # overrideParameters: '-inc_password tuydwoqfn'
 
         deploymentMode: 'Incremental'
