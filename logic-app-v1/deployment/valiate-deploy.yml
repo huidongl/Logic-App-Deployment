@@ -25,22 +25,22 @@ stages:
 
     steps:
 
-      - task: AzureResourceGroupDeployment@2
+      # - task: AzureResourceGroupDeployment@2
 
-        displayName: 'Validate Logic App'
+      #   displayName: 'Validate Logic App'
 
-        inputs:
+      #   inputs:
 
-          azureSubscription: 'huidong'
+      #     azureSubscription: 'huidong'
 
-          resourceGroupName: 'huidong'
+      #     resourceGroupName: 'huidong'
 
-          location: 'japaneast'
+      #     location: 'japaneast'
 
-          csmFile: '/../template/template.json'
+      #     csmFile: '/../template/template.json'
 
-          csmParametersFile: '/../template/parameters.json'
-          deploymentMode: Validation
+      #     csmParametersFile: '/../template/parameters.json'
+      #     deploymentMode: Validation
 
 
 
