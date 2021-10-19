@@ -100,6 +100,7 @@ stages:
       inputs:
 
         azureSubscription: 'huidong'
+        ConnectedServiceName: 'huidong'
 
         resourceGroupName: 'huidong'
 
