@@ -110,9 +110,9 @@ stages:
 
         location: 'japaneast'
 
-        csmFile: '$(Agent.BuildDirectory)/logic_createincident/template.json'
+        csmFile: '$(Build.ArtifactStagingDirectory)/logic_createincident/template.json'
 
-        csmParametersFile: '$(Agent.BuildDirectory)/logic_createincident/parameters.json'
+        csmParametersFile: '$(Build.ArtifactStagingDirectory)/logic_createincident/parameters.json'
 
         # overrideParameters: '-inc_password tuydwoqfn'
 
