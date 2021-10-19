@@ -31,7 +31,7 @@ stages:
 
         inputs:
 
-          azureSubscription: 'Huidong Liu'
+          azureSubscription: 'huidong'
 
           resourceGroupName: 'huidong'
 
@@ -100,7 +100,7 @@ stages:
 
       inputs:
 
-        azureSubscription: 'Huidong Liu'
+        azureSubscription: 'huidong'
 
         resourceGroupName: 'huidong'
 
