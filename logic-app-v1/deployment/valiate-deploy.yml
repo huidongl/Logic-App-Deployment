@@ -37,9 +37,9 @@ stages:
 
           location: 'japaneast'
 
-          csmFile: 'logic-app-v1/template/template.json'
+          csmFile: '/logic-app-v1/template/template.json'
 
-          csmParametersFile: 'logic-app-v1/template/parameters.json'
+          csmParametersFile: '/logic-app-v1/template/parameters.json'
           deploymentMode: Validation
 
 
@@ -50,7 +50,7 @@ stages:
 
         inputs:
 
-          SourceFolder: '$(System.DefaultWorkingDirectory)/template'
+          SourceFolder: '$(System.DefaultWorkingDirectory)/logic-app-v1/template'
 
           Contents: |
 
@@ -67,7 +67,7 @@ stages:
 
         inputs:
 
-          targetPath: '$(System.DefaultWorkingDirectory)/project_output'
+          targetPath: '$(System.DefaultWorkingDirectory)/logic-app-v1/project_output'
 
           artifact: 'logic_createincident'
 
