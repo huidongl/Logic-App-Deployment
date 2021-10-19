@@ -2,16 +2,8 @@
     "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
-        "workflows_EventGrid_name": {
-            "defaultValue": "EventGrid",
-            "type": "String"
-        },
-        "connections_azureblob_2_externalid": {
-            "defaultValue": "/subscriptions/cc0ecbfb-0faf-492d-8996-be21d0865ca6/resourceGroups/huidong/providers/Microsoft.Web/connections/azureblob-2",
-            "type": "String"
-        },
-        "connections_outlook_1_externalid": {
-            "defaultValue": "/subscriptions/cc0ecbfb-0faf-492d-8996-be21d0865ca6/resourceGroups/huidong/providers/Microsoft.Web/connections/outlook-1",
+        "workflows_MyLogicApp2_name": {
+            "defaultValue": "MyLogicApp2",
             "type": "String"
         }
     },
@@ -20,127 +12,43 @@
         {
             "type": "Microsoft.Logic/workflows",
             "apiVersion": "2017-07-01",
-            "name": "[parameters('workflows_EventGrid_name')]",
-            "location": "eastus",
+            "name": "[parameters('workflows_MyLogicApp2_name')]",
+            "location": "East US",
+            "identity": {
+                "principalId": "cd1f5a89-4a1c-4c9d-aa9d-228c744adfb9",
+                "tenantId": "72f988bf-86f1-41af-91ab-2d7cd011db47",
+                "type": "SystemAssigned"
+            },
             "properties": {
                 "state": "Enabled",
                 "definition": {
                     "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
                     "contentVersion": "1.0.0.0",
-                    "parameters": {
-                        "$connections": {
-                            "defaultValue": {},
-                            "type": "Object"
-                        }
-                    },
+                    "parameters": {},
                     "triggers": {
-                        "When_a_blob_is_added_or_modified_(properties_only)_(V2)": {
-                            "recurrence": {
-                                "frequency": "Day",
-                                "interval": 1
-                            },
-                            "evaluatedRecurrence": {
-                                "frequency": "Day",
-                                "interval": 1
-                            },
-                            "splitOn": "@triggerBody()",
-                            "metadata": {
-                                "JTJmc2J0ZXN0": "/sbtest"
-                            },
-                            "type": "ApiConnection",
+                        "manual": {
+                            "type": "Request",
+                            "kind": "Http",
                             "inputs": {
-                                "host": {
-                                    "connection": {
-                                        "name": "@parameters('$connections')['azureblob']['connectionId']"
-                                    }
-                                },
-                                "method": "get",
-                                "path": "/v2/datasets/@{encodeURIComponent(encodeURIComponent('AccountNameFromSettings'))}/triggers/batch/onupdatedfile",
-                                "queries": {
-                                    "checkBothCreatedAndModifiedDateTime": false,
-                                    "folderId": "JTJmc2J0ZXN0",
-                                    "maxFileCount": 10
-                                }
+                                "method": "GET",
+                                "schema": {}
                             }
                         }
                     },
                     "actions": {
-                        "Initialize_variable": {
-                            "runAfter": {
-                                "Initialize_variable_2": [
-                                    "Succeeded"
-                                ]
-                            },
-                            "type": "InitializeVariable",
-                            "inputs": {
-                                "variables": [
-                                    {
-                                        "name": "files",
-                                        "type": "string",
-                                        "value": "@{join(variables('array1'), '</br>')}"
-                                    }
-                                ]
-                            }
-                        },
-                        "Initialize_variable_2": {
+                        "Response": {
                             "runAfter": {},
-                            "type": "InitializeVariable",
+                            "type": "Response",
+                            "kind": "Http",
                             "inputs": {
-                                "variables": [
-                                    {
-                                        "name": "array1",
-                                        "type": "array",
-                                        "value": [
-                                            1,
-                                            2,
-                                            3,
-                                            4
-                                        ]
-                                    }
-                                ]
-                            }
-                        },
-                        "Send_an_email_(V2)": {
-                            "runAfter": {
-                                "Initialize_variable": [
-                                    "Succeeded"
-                                ]
-                            },
-                            "type": "ApiConnection",
-                            "inputs": {
-                                "body": {
-                                    "Body": "<p>@{triggerBody()}<br>\n<br>\n@{triggerBody()?['Name']}<br>\n<br>\n@{triggerBody()?['LastModified']}<br>\n<br>\n@{variables('files')}</p>",
-                                    "Subject": "New file added",
-                                    "To": "huidongliu@microsoft.com"
-                                },
-                                "host": {
-                                    "connection": {
-                                        "name": "@parameters('$connections')['outlook']['connectionId']"
-                                    }
-                                },
-                                "method": "post",
-                                "path": "/v2/Mail"
+                                "body": "Hello Logic Apps Template!",
+                                "statusCode": 200
                             }
                         }
                     },
                     "outputs": {}
                 },
-                "parameters": {
-                    "$connections": {
-                        "value": {
-                            "azureblob": {
-                                "connectionId": "[parameters('connections_azureblob_2_externalid')]",
-                                "connectionName": "azureblob-2",
-                                "id": "/subscriptions/cc0ecbfb-0faf-492d-8996-be21d0865ca6/providers/Microsoft.Web/locations/eastus/managedApis/azureblob"
-                            },
-                            "outlook": {
-                                "connectionId": "[parameters('connections_outlook_1_externalid')]",
-                                "connectionName": "outlook-1",
-                                "id": "/subscriptions/cc0ecbfb-0faf-492d-8996-be21d0865ca6/providers/Microsoft.Web/locations/eastus/managedApis/outlook"
-                            }
-                        }
-                    }
-                }
+                "parameters": {}
             }
         }
     ]
