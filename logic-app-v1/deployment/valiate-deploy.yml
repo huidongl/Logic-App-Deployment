@@ -37,12 +37,9 @@ stages:
 
           location: 'japaneast'
 
-          csmFile: 'template/template.json'
+          csmFile: 'logic-app-v1/template/template.json'
 
-          csmParametersFile: 'template/parameters.json'
-
-          overrideParameters: '-inc_password tuydwoqfn'
-
+          csmParametersFile: 'logic-app-v1/template/parameters.json'
           deploymentMode: Validation
 
 
