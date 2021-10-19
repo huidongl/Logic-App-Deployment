@@ -37,9 +37,9 @@ stages:
 
           location: 'japaneast'
 
-          csmFile: '/logic-app-v1/template/template.json'
+          csmFile: '/../template/template.json'
 
-          csmParametersFile: '/logic-app-v1/template/parameters.json'
+          csmParametersFile: '/../template/parameters.json'
           deploymentMode: Validation
 
 
