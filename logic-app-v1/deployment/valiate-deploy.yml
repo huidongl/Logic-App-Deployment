@@ -90,7 +90,6 @@ stages:
       vmImage: 'ubuntu-latest'
 
     steps:
-
     - task: AzureResourceGroupDeployment@2
 
       displayName: 'Deploy Logic App'
@@ -103,9 +102,9 @@ stages:
 
         location: 'japaneast'
 
-        csmFile: '$(System.DefaultWorkingDirectory)/project_output/template.json'
+        csmFile: '$(Agent.BuildDirectory)/logic_createincident/template.json'
 
-        csmParametersFile: '$(System.DefaultWorkingDirectory)/project_output/parameters.json'
+        csmParametersFile: '$(Agent.BuildDirectory)/logic_createincident/parameters.json'
 
         # overrideParameters: '-inc_password tuydwoqfn'
 
