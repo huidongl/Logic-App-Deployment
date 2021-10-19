@@ -67,7 +67,7 @@ stages:
 
         inputs:
 
-          targetPath: '$(System.DefaultWorkingDirectory)/logic-app-v1/project_output'
+          targetPath: '$(System.DefaultWorkingDirectory)/project_output'
 
           artifact: 'logic_createincident'
 
