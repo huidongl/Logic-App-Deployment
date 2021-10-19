@@ -1,0 +1,115 @@
+trigger: none
+
+
+
+pr: none
+
+
+
+
+stages:
+
+- stage: Validate
+
+  jobs:
+
+  - job: Build
+
+    pool:
+
+      vmImage: 'ubuntu-latest'
+
+      variables: 
+
+        ErrorText: ''
+
+    steps:
+
+      - task: AzureResourceGroupDeployment@2
+
+        displayName: 'Validate Logic App'
+
+        inputs:
+
+          azureSubscription: 'Huidong Liu'
+
+          resourceGroupName: 'huidong'
+
+          location: 'japaneast'
+
+          csmFile: 'template/template.json'
+
+          csmParametersFile: 'template/parameters.json'
+
+          overrideParameters: '-inc_password tuydwoqfn'
+
+          deploymentMode: Validation
+
+
+
+      - task: CopyFiles@2
+
+        displayName: 'Create project folder'
+
+        inputs:
+
+          SourceFolder: '$(System.DefaultWorkingDirectory)/template'
+
+          Contents: |
+
+              *.json
+
+          TargetFolder: 'project_output'
+
+
+
+
+      - task: PublishPipelineArtifact@1
+
+        displayName: 'Publish project artifact'
+
+        inputs:
+
+          targetPath: '$(System.DefaultWorkingDirectory)/project_output'
+
+          artifact: 'logic_createincident'
+
+          publishLocation: 'pipeline'
+
+
+
+- stage: Deploy
+
+  displayName: 'Deployment'
+
+  jobs:
+
+  - job: deploy_logicapp_resources
+
+    displayName: Deploy Logic App
+
+    pool:
+
+      vmImage: 'ubuntu-latest'
+
+    steps:
+
+    - task: AzureResourceGroupDeployment@2
+
+      displayName: 'Deploy Logic App'
+
+      inputs:
+
+        azureSubscription: 'sc-azureetl_lifejload-dt'
+
+        resourceGroupName: 'rg-AzureETLLifejLoad-test-001'
+
+        location: 'japaneast'
+
+        csmFile: '$(Pipeline.Workspace)/**/logic_createincident/template.json'
+
+        csmParametersFile: '$(Pipeline.Workspace)/**/logic_createincident/parameters.json'
+
+        overrideParameters: '-inc_password tuydwoqfn'
+
+        deploymentMode: 'Incremental'
