@@ -102,9 +102,9 @@ stages:
 
         location: 'japaneast'
 
-        csmFile: '$(Build.ArtifactStagingDirectory)'/template.json'
+        csmFile: '$(Build.ArtifactStagingDirectory)/template.json'
 
-        csmParametersFile: '$(Build.ArtifactStagingDirectory)'/parameters.json'
+        csmParametersFile: '$(Build.ArtifactStagingDirectory)/parameters.json'
 
         # overrideParameters: '-inc_password tuydwoqfn'
 
