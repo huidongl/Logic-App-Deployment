@@ -103,9 +103,9 @@ stages:
 
         location: 'japaneast'
 
-        csmFile: '$(Pipeline.Workspace)/**/project_output/template.json'
+        csmFile: '$(System.DefaultWorkingDirectory)/project_output/template.json'
 
-        csmParametersFile: '$(Pipeline.Workspace)/**/project_output/parameters.json'
+        csmParametersFile: '$(System.DefaultWorkingDirectory)/project_output/parameters.json'
 
         # overrideParameters: '-inc_password tuydwoqfn'
 
