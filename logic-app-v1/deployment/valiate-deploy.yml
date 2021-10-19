@@ -102,9 +102,9 @@ stages:
 
         location: 'japaneast'
 
-        csmFile: '$(Agent.BuildDirectory)/logic_createincident/template.json'
+        csmFile: '$(Agent.BuildDirectory)/project_output/template.json'
 
-        csmParametersFile: '$(Agent.BuildDirectory)/logic_createincident/parameters.json'
+        csmParametersFile: '$(Agent.BuildDirectory)/project_output/parameters.json'
 
         # overrideParameters: '-inc_password tuydwoqfn'
 
