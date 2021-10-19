@@ -100,9 +100,9 @@ stages:
 
       inputs:
 
-        azureSubscription: 'sc-azureetl_lifejload-dt'
+        azureSubscription: 'Huidong Liu'
 
-        resourceGroupName: 'rg-AzureETLLifejLoad-test-001'
+        resourceGroupName: 'huidong'
 
         location: 'japaneast'
 
