@@ -62,8 +62,8 @@ stages:
       - task: PublishBuildArtifacts@1
         displayName:  Publish build artifacts
         inputs:
-          PathtoPublish: '$(Build.ArtifactStagingDirectory)'
-          ArtifactName: 'logic_createincident'
+          pathtoPublish: '$(Build.ArtifactStagingDirectory)'
+          artifactName: 'logic_createincident'
 
       # - task: PublishPipelineArtifact@1
 
@@ -93,6 +93,10 @@ stages:
       vmImage: 'ubuntu-latest'
 
     steps:
+    - task: DownloadPipelineArtifact@2
+      inputs:
+        artifact: 'logic_createincident'
+        path: '$(Build.ArtifactStagingDirectory)'
     - task: AzureResourceGroupDeployment@2
 
       displayName: 'Deploy Logic App'
