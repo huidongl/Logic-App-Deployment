@@ -56,7 +56,7 @@ stages:
 
               *.json
 
-          TargetFolder: '$(Build.ArtifactStagingDirectory)'
+          TargetFolder: 'project_output'
 
 
 
