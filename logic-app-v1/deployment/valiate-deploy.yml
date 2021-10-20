@@ -59,22 +59,22 @@ stages:
           TargetFolder: '$(Build.ArtifactStagingDirectory)'
 
 
-      - task: PublishBuildArtifacts@1
-        displayName:  Publish build artifacts
-        inputs:
-          pathtoPublish: '$(Build.ArtifactStagingDirectory)'
-          artifactName: 'logic_createincident'
-
-      # - task: PublishPipelineArtifact@1
-
-      #   displayName: 'Publish project artifact'
-
+      # - task: PublishBuildArtifacts@1
+      #   displayName:  Publish build artifacts
       #   inputs:
-      #     targetPath:: '$(Build.ArtifactStagingDirectory)'
+      #     pathtoPublish: '$(Build.ArtifactStagingDirectory)'
+      #     artifactName: 'logic_createincident'
 
-      #     artifact: 'logic_createincident'
+      - task: PublishPipelineArtifact@1
 
-      #     # publishLocation: 'pipeline'
+        displayName: 'Publish project artifact'
+
+        inputs:
+          targetPath:: '$(Build.ArtifactStagingDirectory)'
+
+          artifact: 'logic_createincident'
+
+          # publishLocation: 'pipeline'
 
 
 
@@ -111,10 +111,10 @@ stages:
         location: 'japaneast'
 
         # csmFile: '$(Pipeline.Workspace)/template.json'
-        csmFile: '$(Build.ArtifactStagingDirectory)/template.json'
+        csmFile: '$(Pipeline.Workspace)/logic_createincident/template.json'
 
         # csmParametersFile: '$(Pipeline.Workspace)/parameters.json'
-        csmParametersFile: '$(Build.ArtifactStagingDirectory)/parameters.json'
+        csmParametersFile: '$(Pipeline.Workspace)/logic_createincident/parameters.json'
 
         # overrideParameters: '-inc_password tuydwoqfn'
 
