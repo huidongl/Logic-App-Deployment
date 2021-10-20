@@ -115,10 +115,10 @@ stages:
         location: 'japaneast'
 
         # csmFile: '$(Pipeline.Workspace)/template.json'
-        csmFile: '$(Pipeline.Workspace)/$(Build.BuildId)/logic_createincident/template.json'
+        csmFile: '$(Build.ArtifactStagingDirectory)/template.json'
 
         # csmParametersFile: '$(Pipeline.Workspace)/parameters.json'
-        csmParametersFile: '$(Pipeline.Workspace)/$(Build.BuildId)/logic_createincident/parameters.json'
+        csmParametersFile: '$(Build.ArtifactStagingDirectory)/parameters.json'
 
         # overrideParameters: '-inc_password tuydwoqfn'
 
