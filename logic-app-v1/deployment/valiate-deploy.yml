@@ -98,6 +98,8 @@ stages:
     #   inputs:
     #     artifact: 'logic_createincident'
     #     path: '$(Build.ArtifactStagingDirectory)'
+    - bash: echo $(Build.ArtifactStagingDirectory)
+    - bash: echo $(Pipeline.Workspace)
     - bash: echo $(Pipeline.Workspace)/$(Build.BuildId)
     - task: AzureResourceGroupDeployment@2
 
