@@ -56,8 +56,8 @@ stages:
 
               *.json
 
-          # TargetFolder: '$(Build.ArtifactStagingDirectory)'
-          TargetFolder: 'project_output'
+          TargetFolder: '$(Build.ArtifactStagingDirectory)'
+          # TargetFolder: 'project_output'
 
 
       - task: PublishBuildArtifacts@1
