@@ -101,6 +101,9 @@ stages:
     - bash: echo $(Build.ArtifactStagingDirectory)
     - bash: echo $(Pipeline.Workspace)
     - bash: echo $(Pipeline.Workspace)/$(Build.BuildId)
+    - script: dir
+       workingDirectory: $(Build.ArtifactStagingDirectory)
+        displayName: List contents of a folder
     - task: AzureResourceGroupDeployment@2
 
       displayName: 'Deploy Logic App'
