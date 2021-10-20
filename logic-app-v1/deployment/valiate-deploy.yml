@@ -58,9 +58,9 @@ stages:
 
           TargetFolder: '$(Build.ArtifactStagingDirectory)'
           # TargetFolder: 'project_output'
-    - script: dir
-      workingDirectory: $(Build.ArtifactStagingDirectory)
-      displayName: List contents of a folder
+      - script: dir
+        workingDirectory: $(Build.ArtifactStagingDirectory)
+        displayName: List contents of a folder
 
       # - task: PublishBuildArtifacts@1
       #   displayName:  Publish build artifacts
