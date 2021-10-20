@@ -77,7 +77,7 @@ stages:
 
           artifact: 'logic_createincident'
 
-          # publishLocation: 'pipeline'
+          publishLocation: 'pipeline'
 
 
 
@@ -120,10 +120,10 @@ stages:
         location: 'japaneast'
 
         # csmFile: '$(Pipeline.Workspace)/template.json'
-        csmFile: '$(Build.ArtifactStagingDirectory)/template.json'
+        csmFile: '$(Build.ArtifactStagingDirectory)/a/template.json'
 
         # csmParametersFile: '$(Pipeline.Workspace)/parameters.json'
-        csmParametersFile: '$(Build.ArtifactStagingDirectory)/parameters.json'
+        csmParametersFile: '$(Build.ArtifactStagingDirectory)/a/parameters.json'
 
         # overrideParameters: '-inc_password tuydwoqfn'
 
