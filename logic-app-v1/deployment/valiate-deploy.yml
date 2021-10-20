@@ -56,7 +56,8 @@ stages:
 
               *.json
 
-          TargetFolder: '$(Build.ArtifactStagingDirectory)'
+          # TargetFolder: '$(Build.ArtifactStagingDirectory)'
+          TargetFolder: 'project_output'
 
 
       # - task: PublishBuildArtifacts@1
@@ -70,7 +71,7 @@ stages:
         displayName: 'Publish project artifact'
 
         inputs:
-          targetPath:: '$(Build.ArtifactStagingDirectory)'
+          targetPath:: '$(Build.ArtifactStagingDirectory)/project_output/*.json'
 
           artifact: 'logic_createincident'
 
