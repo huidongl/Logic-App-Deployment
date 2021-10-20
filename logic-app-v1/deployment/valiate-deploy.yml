@@ -62,11 +62,11 @@ stages:
         workingDirectory: $(Build.ArtifactStagingDirectory)
         displayName: List contents of a folder
 
-      # - task: PublishBuildArtifacts@1
-      #   displayName:  Publish build artifacts
-      #   inputs:
-      #     pathtoPublish: '$(Build.ArtifactStagingDirectory)'
-      #     artifactName: 'logic_createincident'
+      - task: PublishBuildArtifacts@1
+        displayName:  Publish build artifacts
+        inputs:
+          pathtoPublish: '$(Build.ArtifactStagingDirectory)'
+          artifactName: 'logic_createincident'
 
       # - task: PublishPipelineArtifact@1
 
