@@ -1,0 +1,92 @@
+trigger: none
+
+
+
+pr: none
+
+
+
+
+stages:
+
+- stage: Validate
+
+  jobs:
+
+  - job: Build
+
+    pool:
+
+      vmImage: 'ubuntu-latest'
+
+      variables: 
+
+        ErrorText: ''
+
+    steps:
+
+      - task: CopyFiles@2
+
+        displayName: 'Create project folder'
+
+        inputs:
+
+          SourceFolder: '$(System.DefaultWorkingDirectory)/logic-app-v1/template'
+
+          Contents: |
+
+              *.json
+
+          TargetFolder: '$(Build.ArtifactStagingDirectory)'
+
+      - script: dir
+        workingDirectory: $(Build.ArtifactStagingDirectory)
+        displayName: List contents of a folder
+
+      - task: PublishBuildArtifacts@1
+        displayName:  Publish build artifacts
+        inputs:
+          pathtoPublish: '$(Build.ArtifactStagingDirectory)'
+          artifactName: 'logic_createincident'
+
+
+- stage: Deploy
+
+  displayName: 'Deployment'
+
+  jobs:
+
+  - job: deploy_logicapp_resources
+
+    displayName: Deploy Logic App
+
+    pool:
+
+      vmImage: 'ubuntu-latest'
+
+    steps:
+    - task: DownloadPipelineArtifact@2
+      inputs:
+        artifact: 'logic_createincident'
+        path: '$(Build.ArtifactStagingDirectory)'
+
+    - task: AzureResourceGroupDeployment@2
+
+      displayName: 'Deploy Logic App'
+
+      inputs:
+
+        azureSubscription: 'huidong'
+        ConnectedServiceName: 'huidong'
+
+        resourceGroupName: 'huidong'
+
+        location: 'japaneast'
+
+        csmFile: '$(Build.ArtifactStagingDirectory)/template.json'
+
+        csmParametersFile: '$(Build.ArtifactStagingDirectory)/parameters.json'
+
+        # overrideParameters: '-inc_password tuydwoqfn'
+
+        deploymentMode: 'Incremental'
