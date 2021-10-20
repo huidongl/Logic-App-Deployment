@@ -60,11 +60,11 @@ stages:
           # TargetFolder: 'project_output'
 
 
-      - task: PublishBuildArtifacts@1
-        displayName:  Publish build artifacts
-        inputs:
-          pathtoPublish: '$(Build.ArtifactStagingDirectory)'
-          artifactName: 'logic_createincident'
+      # - task: PublishBuildArtifacts@1
+      #   displayName:  Publish build artifacts
+      #   inputs:
+      #     pathtoPublish: '$(Build.ArtifactStagingDirectory)'
+      #     artifactName: 'logic_createincident'
 
       # - task: PublishPipelineArtifact@1
 
