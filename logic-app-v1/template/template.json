@@ -15,7 +15,7 @@
             "name": "[parameters('workflows_MyLogicApp2_name')]",
             "location": "East US",
             "identity": {
-                "principalId": "cd1f5a89-4a1c-4c9d-aa9d-228c744adfb9",
+                "principalId": null,
                 "tenantId": "72f988bf-86f1-41af-91ab-2d7cd011db47",
                 "type": "SystemAssigned"
             },
