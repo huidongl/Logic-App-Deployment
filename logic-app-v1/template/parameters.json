@@ -3,7 +3,7 @@
     "contentVersion": "1.0.0.0",
     "parameters": {
         "workflows_MyLogicApp2_name": {
-            "value": null
+            "value": "CICDtest"
         }
     }
 }
