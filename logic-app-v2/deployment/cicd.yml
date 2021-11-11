@@ -1,0 +1,8 @@
+- task: AzureFunctionApp@1
+  displayName: 'Deploy logic app workflows'
+  inputs:
+     azureSubscription: 'MyServiceConnection'
+     appType: 'workflowapp'
+     appName: 'DNS1'
+     package: 'wwwroot.zip'
+     deploymentMethod: 'zipDeploy'
