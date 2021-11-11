@@ -2,7 +2,7 @@ trigger: none
 
 
 pr: none
-
+- stage: Build
 
 jobs:
 - job: logic_app_build
