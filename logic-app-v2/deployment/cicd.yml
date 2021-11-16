@@ -47,6 +47,10 @@ stages:
   - job: logic_app_deploy
     displayName: 'Deploy logic app'
     steps:
+    - task: DownloadPipelineArtifact@2
+      inputs:
+        artifact: 'logicAppCIArtifact'
+        path: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
     - task: AzureFunctionApp@1
       displayName: 'Deploy logic app workflows'
       inputs:
@@ -58,5 +62,5 @@ stages:
         appType: 'workflowapp'
         appName: 'HLDNStest1'
         #package: 'pipeline/logicAppCIArtifact/$(Build.BuildId).zip'
-        package: '$(Pipeline.Workspace)/logicAppCIArtifact/$(Build.BuildId).zip'
+        package: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
         deploymentMethod: 'zipDeploy'
