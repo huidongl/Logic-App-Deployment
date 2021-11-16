@@ -57,7 +57,6 @@ stages:
     - task: AzureFunctionApp@1
       displayName: 'Deploy logic app workflows'
       inputs:
-        
         azureSubscription: 'huidong'
         ConnectedServiceName: 'huidong'
         resourceGroupName: 'huidong'
