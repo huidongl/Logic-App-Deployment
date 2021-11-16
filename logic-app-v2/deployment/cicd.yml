@@ -8,50 +8,50 @@ stages:
 
   displayName: 'Build Artifact'
 
-jobs:
-- job: logic_app_build
-  displayName: 'Build and publish logic app'
-  steps:
-  - task: CopyFiles@2
-    displayName: 'Create project folder'
-    inputs:
-      SourceFolder: '$(System.DefaultWorkingDirectory)/azure-devops-sample'
-      Contents: |
-        host.json
-        connections.json
-        test1/**
-      TargetFolder: 'project_output'
+  jobs:
+  - job: logic_app_build
+    displayName: 'Build and publish logic app'
+    steps:
+    - task: CopyFiles@2
+      displayName: 'Create project folder'
+      inputs:
+        SourceFolder: '$(System.DefaultWorkingDirectory)/azure-devops-sample'
+        Contents: |
+          host.json
+          connections.json
+          test1/**
+        TargetFolder: 'project_output'
 
-  - task: ArchiveFiles@2
-    displayName: 'Create project zip'
-    inputs:
-      rootFolderOrFile: '$(System.DefaultWorkingDirectory)/project_output'
-      includeRootFolder: false
-      archiveType: 'zip'
-      archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
-      replaceExistingArchive: true
+    - task: ArchiveFiles@2
+      displayName: 'Create project zip'
+      inputs:
+        rootFolderOrFile: '$(System.DefaultWorkingDirectory)/project_output'
+        includeRootFolder: false
+        archiveType: 'zip'
+        archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
+        replaceExistingArchive: true
 
-  - task: PublishPipelineArtifact@1
-    displayName: 'Publish project zip artifact'
-    inputs:
-      targetPath: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
-      artifact: '$(logicAppCIArtifactName)'
-      publishLocation: 'pipeline'
+    - task: PublishPipelineArtifact@1
+      displayName: 'Publish project zip artifact'
+      inputs:
+        targetPath: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
+        artifact: '$(logicAppCIArtifactName)'
+        publishLocation: 'pipeline'
 
 
 - stage: Deployment
 
   displayName: 'Deploy logic app'
 
-jobs:
-- job: logic_app_deploy
-  displayName: 'Deploy logic app'
-    steps:
-- task: AzureFunctionApp@1
-  displayName: 'Deploy logic app workflows'
-  inputs:
-     azureSubscription: 'MyServiceConnection'
-     appType: 'workflowapp'
-     appName: 'DNS1'
-     package: 'wwwroot.zip'
-     deploymentMethod: 'zipDeploy'
+  jobs:
+  - job: logic_app_deploy
+    displayName: 'Deploy logic app'
+      steps:
+  - task: AzureFunctionApp@1
+    displayName: 'Deploy logic app workflows'
+    inputs:
+      azureSubscription: 'MyServiceConnection'
+      appType: 'workflowapp'
+      appName: 'DNS1'
+      package: 'wwwroot.zip'
+      deploymentMethod: 'zipDeploy'
