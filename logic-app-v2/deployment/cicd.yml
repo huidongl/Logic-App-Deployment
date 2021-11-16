@@ -46,7 +46,7 @@ stages:
   jobs:
   - job: logic_app_deploy
     displayName: 'Deploy logic app'
-      steps:
+    steps:
   - task: AzureFunctionApp@1
     displayName: 'Deploy logic app workflows'
     inputs:
