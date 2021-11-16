@@ -15,7 +15,7 @@ stages:
     - task: CopyFiles@2
       displayName: 'Create project folder'
       inputs:
-        SourceFolder: '$(System.DefaultWorkingDirectory)/azure-devops-sample'
+        SourceFolder: '$(System.DefaultWorkingDirectory)/logic-app-v2/azure-devops-sample'
         Contents: |
           host.json
           connections.json
@@ -25,7 +25,7 @@ stages:
     - task: ArchiveFiles@2
       displayName: 'Create project zip'
       inputs:
-        rootFolderOrFile: '$(System.DefaultWorkingDirectory)/project_output'
+        rootFolderOrFile: '$(System.DefaultWorkingDirectory)/logic-app-v2/project_output'
         includeRootFolder: false
         archiveType: 'zip'
         archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
