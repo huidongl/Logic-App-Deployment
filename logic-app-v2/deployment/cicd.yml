@@ -50,7 +50,11 @@ stages:
     - task: AzureFunctionApp@1
       displayName: 'Deploy logic app workflows'
       inputs:
-        azureSubscription: 'MyServiceConnection'
+        
+        azureSubscription: 'huidong'
+        ConnectedServiceName: 'huidong'
+        resourceGroupName: 'huidong'
+        location: 'japaneast'
         appType: 'workflowapp'
         appName: 'DNS1'
         package: 'wwwroot.zip'
