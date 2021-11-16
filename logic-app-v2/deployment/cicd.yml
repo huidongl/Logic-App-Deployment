@@ -20,7 +20,7 @@ stages:
           host.json
           connections.json
           test1/**
-        TargetFolder: 'project_output'
+        TargetFolder: '$(System.DefaultWorkingDirectory)/logic-app-v2/project_output'
 
     - task: ArchiveFiles@2
       displayName: 'Create project zip'
