@@ -57,5 +57,5 @@ stages:
         location: 'japaneast'
         appType: 'workflowapp'
         appName: 'DNS1'
-        package: 'wwwroot.zip'
+        package: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
         deploymentMethod: 'zipDeploy'
