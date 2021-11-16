@@ -51,6 +51,9 @@ stages:
       inputs:
         artifact: 'logicAppCIArtifact'
         path: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
+    - script: dir
+        workingDirectory: $(Build.ArtifactStagingDirectory)
+        displayName: List contents of a folder
     - task: AzureFunctionApp@1
       displayName: 'Deploy logic app workflows'
       inputs:
