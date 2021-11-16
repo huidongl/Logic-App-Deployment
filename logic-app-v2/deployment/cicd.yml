@@ -56,6 +56,6 @@ stages:
         resourceGroupName: 'huidong'
         location: 'japaneast'
         appType: 'workflowapp'
-        appName: 'DNS1'
+        appName: 'HLDNStest1'
         package: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
         deploymentMethod: 'zipDeploy'
