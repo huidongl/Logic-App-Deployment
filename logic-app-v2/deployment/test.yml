@@ -3,8 +3,8 @@ trigger: none
 
 pr: none
 
-stages:
-- stage: Build
+# stages:
+# - stage: Build
 
   displayName: 'Build Artifact'
 
@@ -39,9 +39,9 @@ stages:
 #         publishLocation: 'pipeline'
 
 
-- stage: Deployment
+# - stage: Deployment
 
-  displayName: 'Deploy logic app'
+#   displayName: 'Deploy logic app'
 
   jobs:
   - job: logic_app_deploy
