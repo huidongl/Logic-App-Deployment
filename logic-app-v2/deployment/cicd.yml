@@ -35,7 +35,7 @@ stages:
       displayName: 'Publish project zip artifact'
       inputs:
         targetPath: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
-        #artifact: '$(logicAppCIArtifactName)'
+        artifact: 'logicAppCIArtifact'
         publishLocation: 'pipeline'
 
 
@@ -57,5 +57,5 @@ stages:
         location: 'japaneast'
         appType: 'workflowapp'
         appName: 'HLDNStest1'
-        package: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
+        package: '$(Build.ArtifactStagingDirectory)/logicAppCIArtifact/$(Build.BuildId).zip'
         deploymentMethod: 'zipDeploy'
