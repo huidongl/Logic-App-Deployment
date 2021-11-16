@@ -57,5 +57,6 @@ stages:
         location: 'japaneast'
         appType: 'workflowapp'
         appName: 'HLDNStest1'
-        package: 'pipeline/logicAppCIArtifact/$(Build.BuildId).zip'
+        #package: 'pipeline/logicAppCIArtifact/$(Build.BuildId).zip'
+        package: '$(Pipeline.Workspace)/logicAppCIArtifact/$(resources.pipeline.cipipeline.runID).zip'
         deploymentMethod: 'zipDeploy'
