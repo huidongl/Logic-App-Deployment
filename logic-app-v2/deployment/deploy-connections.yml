@@ -9,6 +9,77 @@ pr: none
 
 stages:
 
+- stage: Validate
+
+  jobs:
+
+  - job: Build
+
+    pool:
+
+      vmImage: 'ubuntu-latest'
+
+      variables: 
+
+        ErrorText: ''
+
+    steps:
+
+      # - task: AzureResourceGroupDeployment@2
+
+      #   displayName: 'Validate Logic App'
+
+      #   inputs:
+
+      #     azureSubscription: 'huidong'
+
+      #     resourceGroupName: 'huidong'
+
+      #     location: 'japaneast'
+
+      #     csmFile: '/../template/template.json'
+
+      #     csmParametersFile: '/../template/parameters.json'
+      #     deploymentMode: Validation
+
+
+
+      - task: CopyFiles@2
+
+        displayName: 'Create project folder'
+
+        inputs:
+
+          SourceFolder: '$(System.DefaultWorkingDirectory)/logic-app-v2/blob-connection'
+
+          Contents: |
+
+              *.json
+
+          TargetFolder: '$(Build.ArtifactStagingDirectory)'
+          # TargetFolder: 'project_output'
+      - script: dir
+        workingDirectory: $(Build.ArtifactStagingDirectory)
+        displayName: List contents of a folder
+
+      # - task: PublishBuildArtifacts@1
+      #   displayName:  Publish build artifacts
+      #   inputs:
+      #     pathtoPublish: '$(Build.ArtifactStagingDirectory)'
+      #     artifactName: 'logic_createincident'
+
+      - task: PublishPipelineArtifact@1
+
+        displayName: 'Publish project artifact'
+
+        inputs:
+          targetPath:: '$(Build.ArtifactStagingDirectory)'
+
+          artifact: 'logic_createincident'
+
+          publishLocation: 'pipeline'
+
+
 
 - stage: Deploy
 
@@ -25,7 +96,16 @@ stages:
       vmImage: 'ubuntu-latest'
 
     steps:
-
+    - task: DownloadPipelineArtifact@2
+      inputs:
+        artifact: 'logic_createincident'
+        path: '$(Build.ArtifactStagingDirectory)'
+    - bash: echo $(Build.ArtifactStagingDirectory)
+    - bash: echo $(Pipeline.Workspace)
+    - bash: echo $(Pipeline.Workspace)/$(Build.BuildId)
+    - script: dir
+      workingDirectory: $(Build.ArtifactStagingDirectory)
+      displayName: List contents of a folder
     - task: AzureResourceGroupDeployment@2
 
       displayName: 'Deploy Logic App'
@@ -39,9 +119,11 @@ stages:
 
         location: 'southeastasia'
 
-        csmFile: '$(System.DefaultWorkingDirectory)/logic-app-v2/blob-connetion/template.json'
+        # csmFile: '$(Pipeline.Workspace)/template.json'
+        csmFile: '$(Build.ArtifactStagingDirectory)/a/template.json'
 
-        csmParametersFile: '$(System.DefaultWorkingDirectory)/logic-app-v2/blob-connetion/parameters.json'
+        # csmParametersFile: '$(Pipeline.Workspace)/parameters.json'
+        csmParametersFile: '$(Build.ArtifactStagingDirectory)/a/parameters.json'
 
         # overrideParameters: '-inc_password tuydwoqfn'
 
