@@ -29,9 +29,9 @@
                     "name": "storage403test",
                     "displayName": "Azure Blob Storage",
                     "description": "Microsoft Azure Storage provides a massively scalable, durable, and highly available storage for data on the cloud, and serves as the data storage solution for modern applications. Connect to Blob Storage to perform various operations such as create, update, get and delete on blobs in your Azure Storage account.",
-                    "iconUri": "[concat('https://connectoricons-prod.azureedge.net/releases/v1.0.1531/1.0.1531.2596/', parameters('connections_azureblob_name'), '/icon.png')]",
+                    "iconUri": "[concat('https://connectoricons-prod.azureedge.net/releases/v1.0.1531/1.0.1531.2596/', storage403test, '/icon.png')]",
                     "brandColor": "#804998",
-                    "id": "[concat('/subscriptions/cc0ecbfb-0faf-492d-8996-be21d0865ca6/providers/Microsoft.Web/locations/southeastasia/managedApis/', parameters('connections_azureblob_name'))]",
+                    "id": "[concat('/subscriptions/cc0ecbfb-0faf-492d-8996-be21d0865ca6/providers/Microsoft.Web/locations/southeastasia/managedApis/', storage403test",
                     "type": "Microsoft.Web/locations/managedApis"
                 },
                 "testLinks": [
