@@ -63,6 +63,6 @@ stages:
         location: 'japaneast'
         appType: 'functionApp'
         appName: 'HLDNStest1'
-        package: '$(Pipeline.Workspace)/logicAppCIArtifact/$(resources.pipeline.runID).zip'
-        # package: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
+        package: '$(Pipeline.Workspace)/logicAppCIArtifact/$(Build.BuildId).zip'
+        #  package: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
         deploymentMethod: 'zipDeploy'
