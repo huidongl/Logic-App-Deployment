@@ -17,7 +17,7 @@
             "kind": "V2",
 "properties":{
 "api":{"id":"/subscriptions/cc0ecbfb-0faf-492d-8996-be21d0865ca6/providers/Microsoft.Web/locations/southeastasia/managedApis/azureblob"},
-"parameterValueSet":{"name":"keyBasedAuth","values":{"accountName":{"value":"storage403test2"},
+"parameterValueSet":{"name":"keyBasedAuth","values":{"accountName":{"value":"storage403test"},
 "accessKey":{"value":"GeJ9OsALx0QbpN6JOPBm93vLYT24cX4K7MEwaW9YIIcolBnAkOA/p0SdiOA9m3yagejaKYhpVdkZcJdecHzK3Q=="}}},
 "displayName":"blobapiconnection2"}
         }
