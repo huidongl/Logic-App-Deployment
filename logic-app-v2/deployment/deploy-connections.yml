@@ -1,0 +1,48 @@
+trigger: none
+
+
+
+pr: none
+
+
+
+
+stages:
+
+
+- stage: Deploy
+
+  displayName: 'Deployment'
+
+  jobs:
+
+  - job: deploy_logicapp_resources
+
+    displayName: Deploy Logic App
+
+    pool:
+
+      vmImage: 'ubuntu-latest'
+
+    steps:
+
+    - task: AzureResourceGroupDeployment@2
+
+      displayName: 'Deploy Logic App'
+
+      inputs:
+
+        azureSubscription: 'huidong'
+        ConnectedServiceName: 'huidong'
+
+        resourceGroupName: 'huidong'
+
+        location: 'japaneast'
+
+        csmFile: '$(System.DefaultWorkingDirectory)/logic-app-v2/blob-connetion/template.json'
+
+        csmParametersFile: '$(System.DefaultWorkingDirectory)/logic-app-v2/blob-connetion/parameters.json'
+
+        # overrideParameters: '-inc_password tuydwoqfn'
+
+        deploymentMode: 'Incremental'
