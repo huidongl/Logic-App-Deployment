@@ -3,7 +3,8 @@
     "contentVersion": "1.0.0.0",
     "parameters": {
         "connections_azureblob_name": {
-            "value": null
+            "value": "storage403test"
+            "type": "String"
         }
     }
 }
