@@ -47,13 +47,13 @@ stages:
   - job: logic_app_deploy
     displayName: 'Deploy logic app'
     steps:
-    - task: DownloadPipelineArtifact@2
-      inputs:
-        artifact: 'logicAppCIArtifact'
-        path: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
-    - script: dir
-      workingDirectory: $(Build.ArtifactStagingDirectory)
-      displayName: List contents of a folder
+    # - task: DownloadPipelineArtifact@2
+    #   inputs:
+    #     artifact: 'logicAppCIArtifact'
+    #     path: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
+    # - script: dir
+    #   workingDirectory: $(Build.ArtifactStagingDirectory)
+    #   displayName: List contents of a folder
     - task: AzureFunctionApp@1
       displayName: 'Deploy logic app workflows'
       inputs:
@@ -61,8 +61,8 @@ stages:
         ConnectedServiceName: 'huidong'
         resourceGroupName: 'huidong'
         location: 'japaneast'
-        appType: 'workflowapp'
+        appType: 'functionApp'
         appName: 'HLDNStest1'
-        #package: 'pipeline/logicAppCIArtifact/$(Build.BuildId).zip'
-        package: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
+        package: '$(Pipeline.Workspace)/cipipeline/$(logicAppCIArtifactName)/$(resources.pipeline.cipipeline.runID).zip'
+        # package: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
         deploymentMethod: 'zipDeploy'
