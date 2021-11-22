@@ -39,5 +39,5 @@ stages:
               azureSubscription: ''
               appType: 'functionApp'
               appName: 'HLDNStest1'
-              package: '$(Pipeline.Workspace)/cipipeline/$(logicAppCIArtifactName)/$(resources.pipeline.cipipeline.runID).zip'
+              package: '$(Pipeline.Workspace)/$(logicAppCIArtifactName)/$(resources.pipeline.cipipeline.runID).zip'
               deploymentMethod: 'zipDeploy'
