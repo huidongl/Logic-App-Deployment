@@ -25,7 +25,7 @@ stages:
     displayName: Deploy Logic App
     pool:
       vmImage: ubuntu-18.04
-    environment: $(devEnvironment)
+    environment: dev
     variables:
       deploymentMode: 'Incremental'
     strategy:
@@ -38,6 +38,6 @@ stages:
               # TODO: Fill in with the name of your Azure service connection
               azureSubscription: ''
               appType: 'functionApp'
-              appName: '$(logicAppName)'
+              appName: 'HLDNStest1'
               package: '$(Pipeline.Workspace)/cipipeline/$(logicAppCIArtifactName)/$(resources.pipeline.cipipeline.runID).zip'
               deploymentMethod: 'zipDeploy'
