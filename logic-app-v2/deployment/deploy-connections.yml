@@ -25,24 +25,6 @@ stages:
 
     steps:
 
-      # - task: AzureResourceGroupDeployment@2
-
-      #   displayName: 'Validate Logic App'
-
-      #   inputs:
-
-      #     azureSubscription: 'huidong'
-
-      #     resourceGroupName: 'huidong'
-
-      #     location: 'japaneast'
-
-      #     csmFile: '/../template/template.json'
-
-      #     csmParametersFile: '/../template/parameters.json'
-      #     deploymentMode: Validation
-
-
 
       - task: CopyFiles@2
 
@@ -62,11 +44,6 @@ stages:
         workingDirectory: $(Build.ArtifactStagingDirectory)
         displayName: List contents of a folder
 
-      # - task: PublishBuildArtifacts@1
-      #   displayName:  Publish build artifacts
-      #   inputs:
-      #     pathtoPublish: '$(Build.ArtifactStagingDirectory)'
-      #     artifactName: 'logic_createincident'
 
       - task: PublishPipelineArtifact@1
 
