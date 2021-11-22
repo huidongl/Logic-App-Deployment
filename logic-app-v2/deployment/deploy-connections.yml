@@ -39,7 +39,6 @@ stages:
               *.json
 
           TargetFolder: '$(Build.ArtifactStagingDirectory)'
-          # TargetFolder: 'project_output'
       - script: dir
         workingDirectory: $(Build.ArtifactStagingDirectory)
         displayName: List contents of a folder
@@ -96,12 +95,9 @@ stages:
 
         location: 'southeastasia'
 
-        # csmFile: '$(Pipeline.Workspace)/template.json'
         csmFile: '$(Build.ArtifactStagingDirectory)/a/template.json'
 
-        # csmParametersFile: '$(Pipeline.Workspace)/parameters.json'
         csmParametersFile: '$(Build.ArtifactStagingDirectory)/a/parameters.json'
 
-        # overrideParameters: '-inc_password tuydwoqfn'
-
+  
         deploymentMode: 'Incremental'
