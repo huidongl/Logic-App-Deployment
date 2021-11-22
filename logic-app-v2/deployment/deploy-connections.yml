@@ -37,7 +37,7 @@ stages:
 
         resourceGroupName: 'huidong'
 
-        location: 'japaneast'
+        location: 'southeastasia'
 
         csmFile: '$(System.DefaultWorkingDirectory)/logic-app-v2/blob-connetion/template.json'
 
