@@ -15,32 +15,11 @@
             "name": "[parameters('connections_azureblob_name')]",
             "location": "southeastasia",
             "kind": "V2",
-            "properties": {
-                "displayName": "V2connection",
-                "statuses": [
-                    {
-                        "status": "Connected"
-                    }
-                ],
-                "customParameterValues": {},
-                "createdTime": "2021-09-29T09:19:23.229732Z",
-                "changedTime": "2021-09-29T09:19:23.229732Z",
-                "api": {
-                    "name": "[parameters('connections_azureblob_name')]",
-                    "displayName": "Azure Blob Storage",
-                    "description": "Microsoft Azure Storage provides a massively scalable, durable, and highly available storage for data on the cloud, and serves as the data storage solution for modern applications. Connect to Blob Storage to perform various operations such as create, update, get and delete on blobs in your Azure Storage account.",
-                    "iconUri": "[concat('https://connectoricons-prod.azureedge.net/releases/v1.0.1531/1.0.1531.2596/', parameters('connections_azureblob_name'), '/icon.png')]",
-                    "brandColor": "#804998",
-                    "id": "[concat('/subscriptions/cc0ecbfb-0faf-492d-8996-be21d0865ca6/providers/Microsoft.Web/locations/southeastasia/managedApis/', parameters('connections_azureblob_name'))]",
-                    "type": "Microsoft.Web/locations/managedApis"
-                },
-                "testLinks": [
-                    {
-                        "requestUri": "[concat('https://management.azure.com:443/subscriptions/cc0ecbfb-0faf-492d-8996-be21d0865ca6/resourceGroups/Blob403/providers/Microsoft.Web/connections/', parameters('connections_azureblob_name'), '/extensions/proxy/testconnection?api-version=2016-06-01')]",
-                        "method": "get"
-                    }
-                ]
-            }
+"properties":{
+"api":{"id":"/subscriptions/cc0ecbfb-0faf-492d-8996-be21d0865ca6/providers/Microsoft.Web/locations/southeastasia/managedApis/azureblob"},
+"parameterValueSet":{"name":"keyBasedAuth","values":{"accountName":{"value":"storage403test"},
+"accessKey":{"value":"GeJ9OsALx0QbpN6JOPBm93vLYT24cX4K7MEwaW9YIIcolBnAkOA/p0SdiOA9m3yagejaKYhpVdkZcJdecHzK3Q=="}}},
+"displayName":"blobapiconnection"}
         }
     ]
 }
