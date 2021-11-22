@@ -12,7 +12,7 @@
         {
             "type": "Microsoft.Web/connections",
             "apiVersion": "2016-06-01",
-            "name": "[parameters('connections_azureblob_name')]",
+            "name": "storage403test",
             "location": "southeastasia",
             "kind": "V2",
             "properties": {
@@ -26,7 +26,7 @@
                 "createdTime": "2021-09-29T09:19:23.229732Z",
                 "changedTime": "2021-09-29T09:19:23.229732Z",
                 "api": {
-                    "name": "[parameters('connections_azureblob_name')]",
+                    "name": "storage403test",
                     "displayName": "Azure Blob Storage",
                     "description": "Microsoft Azure Storage provides a massively scalable, durable, and highly available storage for data on the cloud, and serves as the data storage solution for modern applications. Connect to Blob Storage to perform various operations such as create, update, get and delete on blobs in your Azure Storage account.",
                     "iconUri": "[concat('https://connectoricons-prod.azureedge.net/releases/v1.0.1531/1.0.1531.2596/', parameters('connections_azureblob_name'), '/icon.png')]",
