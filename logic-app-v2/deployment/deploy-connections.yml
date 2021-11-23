@@ -39,9 +39,6 @@ stages:
               *.json
 
           TargetFolder: '$(Build.ArtifactStagingDirectory)'
-      - script: dir
-        workingDirectory: $(Build.ArtifactStagingDirectory)
-        displayName: List contents of a folder
 
 
       - task: PublishPipelineArtifact@1
@@ -51,7 +48,7 @@ stages:
         inputs:
           targetPath:: '$(Build.ArtifactStagingDirectory)'
 
-          artifact: 'logic_createincident'
+          artifact: 'create_connection'
 
           publishLocation: 'pipeline'
 
@@ -63,9 +60,9 @@ stages:
 
   jobs:
 
-  - job: deploy_logicapp_resources
+  - job: deploy_logicapp_connections
 
-    displayName: Deploy Logic App
+    displayName: Deploy Connection
 
     pool:
 
@@ -74,23 +71,14 @@ stages:
     steps:
     - task: DownloadPipelineArtifact@2
       inputs:
-        artifact: 'logic_createincident'
+        artifact: 'create_connection'
         path: '$(Build.ArtifactStagingDirectory)'
-    - bash: echo $(Build.ArtifactStagingDirectory)
-    - bash: echo $(Pipeline.Workspace)
-    - bash: echo $(Pipeline.Workspace)/$(Build.BuildId)
-    - script: dir
-      workingDirectory: $(Build.ArtifactStagingDirectory)
-      displayName: List contents of a folder
+
     - task: AzureResourceGroupDeployment@2
-
-      displayName: 'Deploy Logic App'
-
+      displayName: 'Deploy Connection'
       inputs:
-
         azureSubscription: 'huidong'
         ConnectedServiceName: 'huidong'
-
         resourceGroupName: 'huidong'
 
         location: 'southeastasia'
