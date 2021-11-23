@@ -9,7 +9,7 @@ pr: none
 
 stages:
 
-- stage: Validate
+- stage: Build
 
   jobs:
 
