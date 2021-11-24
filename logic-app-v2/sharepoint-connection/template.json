@@ -1,0 +1,170 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "connections_sharepointonline_2_name": {
+            "defaultValue": "sharepointonline-2",
+            "type": "String"
+        }
+    },
+    "variables": {},
+    "resources": [
+        {
+            "type": "Microsoft.Web/connections",
+            "apiVersion": "2016-06-01",
+            "name": "[parameters('connections_sharepointonline_2_name')]",
+            "location": "southeastasia",
+            "kind": "V2",
+    "properties": {
+        "name": "sharepointonline",
+        "connectionParameters": {
+            "token": {
+                "type": "oauthSetting",
+                "oAuthSettings": {
+                    "identityProvider": "sharepointonlinecertificateV2",
+                    "clientId": "7ab7862c-4c57-491e-8a45-d52a7e023983",
+                    "scopes": [],
+                    "redirectMode": "Global",
+                    "redirectUrl": "https://global.consent.azure-apim.net/redirect",
+                    "properties": {
+                        "IsFirstParty": "True",
+                        "IsOnbehalfofLoginSupported": true
+                    },
+                    "customParameters": {
+                        "resourceUriAAD": {
+                            "value": "https://graph.microsoft.com/"
+                        },
+                        "loginUri": {
+                            "value": "https://login.windows.net"
+                        },
+                        "loginUriAAD": {
+                            "value": "https://login.windows.net"
+                        },
+                        "resourceUri": {
+                            "value": "https://graph.microsoft.com"
+                        }
+                    }
+                },
+                "uiDefinition": {
+                    "displayName": "Log in with SharePoint Credentials",
+                    "description": "Log in with SharePoint Credentials",
+                    "tooltip": "Provide SharePoint Credentials",
+                    "constraints": {
+                        "required": "true",
+                        "capability": [
+                            "cloud"
+                        ]
+                    }
+                }
+            },
+            "token:TenantId": {
+                "type": "string",
+                "metadata": {
+                    "sourceType": "AzureActiveDirectoryTenant"
+                },
+                "uiDefinition": {
+                    "displayName": "Tenant",
+                    "description": "The tenant ID of for the Azure Active Directory application",
+                    "constraints": {
+                        "required": "false",
+                        "hidden": "true"
+                    }
+                }
+            },
+            "gateway": {
+                "type": "gatewaySetting",
+                "gatewaySettings": {
+                    "dataSourceType": "SharePoint",
+                    "connectionDetails": []
+                },
+                "uiDefinition": {
+                    "tabIndex": 1,
+                    "constraints": {
+                        "hidden": "false",
+                        "capability": [
+                            "gateway"
+                        ]
+                    }
+                }
+            },
+            "authType": {
+                "type": "string",
+                "allowedValues": [
+                    {
+                        "value": "windows"
+                    }
+                ],
+                "uiDefinition": {
+                    "displayName": "Authentication Type",
+                    "description": "Authentication type to connect to your database",
+                    "tooltip": "Authentication type to connect to your database",
+                    "constraints": {
+                        "tabIndex": 2,
+                        "required": "false",
+                        "allowedValues": [
+                            {
+                                "text": "Windows",
+                                "value": "windows"
+                            }
+                        ],
+                        "capability": [
+                            "gateway"
+                        ]
+                    }
+                }
+            },
+            "username": {
+                "type": "securestring",
+                "uiDefinition": {
+                    "displayName": "Username",
+                    "description": "Username credential",
+                    "tooltip": "Username credential",
+                    "constraints": {
+                        "tabIndex": 3,
+                        "clearText": true,
+                        "required": "true",
+                        "capability": [
+                            "gateway"
+                        ]
+                    }
+                }
+            },
+            "password": {
+                "type": "securestring",
+                "uiDefinition": {
+                    "displayName": "Password",
+                    "description": "Password credential",
+                    "tooltip": "Password credential",
+                    "constraints": {
+                        "tabIndex": 4,
+                        "required": "true",
+                        "capability": [
+                            "gateway"
+                        ]
+                    }
+                }
+            }
+        },
+        "metadata": {
+            "source": "marketplace",
+            "brandColor": "#036C70"
+        },
+        "runtimeUrls": [
+            "https://logic-apis-southeastasia.azure-apim.net/apim/sharepointonline"
+        ],
+        "generalInformation": {
+            "iconUrl": "https://connectoricons-prod.azureedge.net/releases/v1.0.1533/1.0.1533.2600/sharepointonline/icon.png",
+            "displayName": "SharePoint",
+            "description": "SharePoint helps organizations share and collaborate with colleagues, partners, and customers. You can connect to SharePoint Online or to an on-premises SharePoint 2013 or 2016 farm using the On-Premises Data Gateway to manage documents and list items.",
+            "releaseTag": "Production",
+            "tier": "Standard"
+        },
+        "capabilities": [
+            "tabular",
+            "gateway",
+            "cloud"
+        ]
+    }
+        }
+    ]
+}
