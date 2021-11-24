@@ -62,11 +62,11 @@ stages:
 
         resourceGroupName: 'huidong'
 
-        location: 'Australia Southeast'
+        location: 'southeastasia'
 
-        csmFile: '$(System.DefaultWorkingDirectory)/Infra-sharepointconnectiontemplate/parameters.json'
+        csmFile: '$(System.DefaultWorkingDirectory)/sharepoint-connecition/parameters.json'
 
-        csmParametersFile: '$(System.DefaultWorkingDirectory)/Infra-sharepointconnectiontemplate/template.json'
+        csmParametersFile: '$(System.DefaultWorkingDirectory)/sharepoint-connecition/template.json'
 
         deploymentMode: 'Incremental'
 
