@@ -22,7 +22,7 @@ stages:
 
     variables:
 
-    - group: huidong
+    - group: 'huidong'
 
     displayName: 'Build and publish logic app'
 
