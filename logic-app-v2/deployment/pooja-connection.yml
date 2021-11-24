@@ -64,9 +64,9 @@ stages:
 
         location: 'southeastasia'
 
-        csmFile: '$(System.DefaultWorkingDirectory)/sharepoint-connecition/parameters.json'
+        csmFile: '$(System.DefaultWorkingDirectory)/logic-app-v2/sharepoint-connection/parameters.json'
 
-        csmParametersFile: '$(System.DefaultWorkingDirectory)/sharepoint-connecition/template.json'
+        csmParametersFile: '$(System.DefaultWorkingDirectory)/logic-app-v2/sharepoint-connection/template.json'
 
         deploymentMode: 'Incremental'
 
