@@ -3,7 +3,7 @@
     "contentVersion": "1.0.0.0",
     "parameters": {
         "connections_sharepointonline_2_name": {
-            "value": "huidongliu@microsoft.com",
+            "value": "sharepointonline",
             "type": "String"
         }
     }
