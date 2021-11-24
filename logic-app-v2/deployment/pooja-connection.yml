@@ -58,8 +58,8 @@ stages:
 
         azureResourceManagerConnection: 'huidong'
 
-        subscriptionId: 'cc0ecbfb-0faf-492d-8996-be21d0865ca6'
-
+        # subscriptionId: 'cc0ecbfb-0faf-492d-8996-be21d0865ca6'
+        azureSubscription: 'huidong'
         resourceGroupName: 'huidong'
 
         location: 'southeastasia'
