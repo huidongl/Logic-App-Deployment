@@ -32,7 +32,7 @@ stages:
 
         inputs:
 
-          SourceFolder: '$(System.DefaultWorkingDirectory)/logic-app-v2/blob-connection'
+          SourceFolder: '$(System.DefaultWorkingDirectory)/logic-app-v2/sharepoint-connection'
 
           Contents: |
 
