@@ -1,0 +1,73 @@
+trigger:
+
+- main
+
+
+
+pr: none
+
+
+
+stages:
+
+- stage: 'Build'
+
+  jobs:
+
+  - job: logic_app_build
+
+    pool:
+
+      vmImage: windows-latest
+
+    variables:
+
+    - group: huidong
+
+    displayName: 'Build and publish logic app'
+
+
+
+    steps:
+
+    # - task: AzureResourceManagerTemplateDeployment@3
+
+    #   inputs:
+
+    #     azureResourceManagerConnection: 'DevOps Service Connection — SIT'
+
+    #     subscriptionId: 'bfb8bd51-1cf7-41f1-892b-d1ce4d2e3dd6'
+
+    #     resourceGroupName: 'aaf-integration-sit-rg'
+
+    #     location: 'Australia Southeast'
+
+    #     csmFile: '$(System.DefaultWorkingDirectory)/Infra-Blobconnectiontemplate/template.json'
+
+    #     csmParametersFile: '$(System.DefaultWorkingDirectory)/Infra-Blobconnectiontemplate/parameters.json'
+
+    #     deploymentMode: 'Incremental'
+
+    #   displayName:  'ARM Template deployment azurebob'
+
+  
+
+    - task: AzureResourceManagerTemplateDeployment@3
+
+      inputs:
+
+        azureResourceManagerConnection: 'huidong'
+
+        subscriptionId: 'cc0ecbfb-0faf-492d-8996-be21d0865ca6'
+
+        resourceGroupName: 'huidong'
+
+        location: 'Australia Southeast'
+
+        csmFile: '$(System.DefaultWorkingDirectory)/Infra-sharepointconnectiontemplate/parameters.json'
+
+        csmParametersFile: '$(System.DefaultWorkingDirectory)/Infra-sharepointconnectiontemplate/template.json'
+
+        deploymentMode: 'Incremental'
+
+      displayName:  'ARM Template deployment sharepoint'   
