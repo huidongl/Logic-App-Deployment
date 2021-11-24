@@ -16,7 +16,6 @@
             "location": "southeastasia",
             "kind": "V2",
     "properties": {
-        "name": "sharepointonline",
         "connectionParameters": {
             "token": {
                 "type": "oauthSetting",
