@@ -7,7 +7,7 @@
             "type": "String"
         },
                 "logicAppSystemAssignedIdentityTenantId": {
-            "value": null,
+            "value": "de40d57c-8820-4050-98e7-29f4bfbf8d80",
             "type": "String"
         },
         "logicAppSystemAssignedIdentityObjectId": {
