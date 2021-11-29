@@ -21,8 +21,6 @@
 "accessKey":{"value":"GeJ9OsALx0QbpN6JOPBm93vLYT24cX4K7MEwaW9YIIcolBnAkOA/p0SdiOA9m3yagejaKYhpVdkZcJdecHzK3Q=="}}},
 "displayName":"blobapiconnection2"}
         },
-
-
         {
             "type": "Microsoft.Web/connections/accessPolicies",
             "apiVersion": "2016-06-01",
