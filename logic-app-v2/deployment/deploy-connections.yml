@@ -37,7 +37,7 @@ stages:
           Contents: |
 
               *.json
-
+#Tenant ID is the AAD tenant ID
           TargetFolder: '$(Build.ArtifactStagingDirectory)'
 
 
