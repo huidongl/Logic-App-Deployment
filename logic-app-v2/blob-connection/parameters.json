@@ -5,6 +5,12 @@
         "connections_azureblob_name": {
             "value": "storage403test",
             "type": "String"
+        },
+                "logicAppSystemAssignedIdentityTenantId": {
+            "value": "de40d57c-8820-4050-98e7-29f4bfbf8d80"
+        },
+        "logicAppSystemAssignedIdentityObjectId": {
+            "value": "5fc96d01-6340-47aa-82e0-9fec2192267d"
         }
     }
 }
