@@ -7,7 +7,7 @@
             "type": "String"
         },
                 "logicAppSystemAssignedIdentityTenantId": {
-            "value": "/subscriptions/cc0ecbfb-0faf-492d-8996-be21d0865ca6/resourcegroups/Blob403/providers/Microsoft.Web/sites/jmsl-hl-test",
+            "value": "72f988bf-86f1-41af-91ab-2d7cd011db47",
             "type": "String"
         },
         "logicAppSystemAssignedIdentityObjectId": {
