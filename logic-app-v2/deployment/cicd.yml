@@ -58,7 +58,7 @@ stages:
     - task: DownloadPipelineArtifact@2
       inputs:
         artifact: 'logicAppCIArtifact'
-        path: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
+        path: '$(Build.ArtifactStagingDirectory)'
     - script: dir
       workingDirectory: $(Build.ArtifactStagingDirectory)
       displayName: List contents of a folder
