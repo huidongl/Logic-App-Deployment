@@ -3,6 +3,14 @@ trigger: none
 
 pr: none
 
+
+variables:
+- name: devEnvironment
+  value: 'dev'
+# TODO: provide an email address for the ExampleWorkflow to an send mail to
+- name: toEmailAddress
+  value: ''
+
 stages:
 - stage: Build
 
@@ -64,5 +72,7 @@ stages:
         appType: 'functionApp'
         appName: 'HLDNStest1'
         # package: '$(Pipeline.Workspace)/logicAppCIArtifact/$(Build.BuildId).zip'
+        appSettings: '-Environment $(devEnvironment) -emailAddress $(toEmailAddress)'
         package: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
+
         deploymentMethod: 'zipDeploy'
