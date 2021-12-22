@@ -1,71 +1,37 @@
 trigger: none
 
-
-
 pr: none
-
-
-
 
 stages:
 
 - stage: Build
-
   jobs:
-
   - job: Build
-
     pool:
-
       vmImage: 'ubuntu-latest'
-
       variables: 
-
         ErrorText: ''
-
     steps:
-
-
       - task: CopyFiles@2
-
         displayName: 'Create project folder'
-
         inputs:
-
           SourceFolder: '$(System.DefaultWorkingDirectory)/logic-app-v2/blob-connection'
-
           Contents: |
-
               *.json
-#Tenant ID is the AAD tenant ID
           TargetFolder: '$(Build.ArtifactStagingDirectory)'
-
-
       - task: PublishPipelineArtifact@1
-
         displayName: 'Publish project artifact'
-
         inputs:
           targetPath:: '$(Build.ArtifactStagingDirectory)'
-
           artifact: 'create_connection'
-
           publishLocation: 'pipeline'
 
-
-
 - stage: Deploy
-
   displayName: 'Deployment'
-
   jobs:
-
   - job: deploy_logicapp_connections
-
     displayName: Deploy Connection
-
     pool:
-
       vmImage: 'ubuntu-latest'
 
     steps:
@@ -80,12 +46,7 @@ stages:
         azureSubscription: 'huidong'
         ConnectedServiceName: 'huidong'
         resourceGroupName: 'huidong'
-
         location: 'southeastasia'
-
         csmFile: '$(Build.ArtifactStagingDirectory)/a/template.json'
-
         csmParametersFile: '$(Build.ArtifactStagingDirectory)/a/parameters.json'
-
-  
         deploymentMode: 'Incremental'
