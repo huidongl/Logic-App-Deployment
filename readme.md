@@ -1,6 +1,6 @@
 # Azure DevOps deployment for Logic App
 
-This project provides examples on how to use Azure DevOps to create a CICD pipepline for deployment of Logic Apps, both consumption and standard versions. 
+This project provides examples (both consumption and standard versions) on how to use Azure DevOps to create a CICD pipepline for deployment of Logic Apps. 
 
 ## Create a project
 To create a pipeline, first we will need to create a new project in Azure devops
