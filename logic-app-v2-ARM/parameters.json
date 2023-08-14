@@ -1,0 +1,30 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+  "parameters": {
+    "logicAppFEname": {
+      "value": "LAPEtest-huidong"
+    },
+    "appInsightName": {
+      "value": "LAPEtest-huidong"
+    },
+         "fileShareName": {
+      "value": "LAPEtest-huidong"
+    },
+    "location": {
+      "value": "Australia East"
+    },
+    "use32BitWorkerProcess": {
+      "value": true
+    },
+    "hostingPlanFEName": {
+      "value": "ASP-standard-pe"
+    },
+    "contentStorageAccountName": {
+      "value": "peaccount"
+    },
+    "subnetName": {
+      "value": "/subscriptions/cc0ecbfb-0faf-492d-8996-be21d0865ca6/resourceGroups/huidong/providers/Microsoft.Network/virtualNetworks/aaa/subnets/default"
+    }
+  }
+}
