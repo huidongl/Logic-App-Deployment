@@ -1,0 +1,152 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+  "parameters": {
+    "logicAppFEname": {
+      "type": "String"
+    },
+    "fileShareName": {
+      "type": "String"
+    },
+    "appInsightName": {
+      "type": "String"
+    },
+    "use32BitWorkerProcess": {
+      "type": "Bool"
+    },
+    "location": {
+      "defaultValue": "[resourceGroup().location]",
+      "type": "String",
+      "metadata": {
+        "description": "Location to deploy resources to."
+      }
+    },
+    "hostingPlanFEName": {
+      "type": "String"
+    },
+    "contentStorageAccountName": {
+      "type": "String"
+    },
+    "subnetName": {
+      "type": "String"
+    }
+  },
+
+    "resources": [
+      {
+        "type": "Microsoft.Storage/storageAccounts/fileServices/shares",
+        "apiVersion": "2021-04-01",
+        "name": "[concat(parameters('contentStorageAccountName'), '/default/', toLower(parameters('fileShareName')))]"
+      },
+      {
+        "type": "Microsoft.Insights/components",
+        "apiVersion": "2020-02-02",
+        "name": "[parameters('logicAppFEname')]",
+        "location": "[parameters('Location')]",
+        "kind": "web",
+        "properties": {
+          "Application_Type": "web"
+        }
+      },
+        {
+            "type": "Microsoft.Web/sites",
+            "apiVersion": "2018-11-01",
+            "name": "[parameters('logicAppFEname')]",
+            "location": "[parameters('location')]",
+            "tags": {},
+            "kind": "functionapp,workflowapp",
+            "identity": {
+                "type": "SystemAssigned"
+            },
+            "properties": {
+                "name": "[parameters('logicAppFEname')]",
+                "siteConfig": {
+                    "appSettings": [
+                        {
+                            "name": "FUNCTIONS_EXTENSION_VERSION",
+                            "value": "~4"
+                        },
+                        {
+                            "name": "FUNCTIONS_WORKER_RUNTIME",
+                            "value": "node"
+                        },
+                        {
+                            "name": "APPINSIGHTS_INSTRUMENTATIONKEY",
+                            "value": "[reference(resourceId('Microsoft.Insights/components', parameters('appInsightName')), '2015-05-01').InstrumentationKey]"
+                        },
+                        {
+                            "name": "APPLICATIONINSIGHTS_CONNECTION_STRING",
+                            "value": "[reference(resourceId('Microsoft.Insights/components', parameters('appInsightName')), '2015-05-01').ConnectionString]"
+                        },
+                        {
+                            "name": "AzureWebJobsStorage",
+                            "value": "[concat('DefaultEndpointsProtocol=https;AccountName=',parameters('contentStorageAccountName'),';AccountKey=',listKeys(resourceId('Microsoft.Storage/storageAccounts', parameters('contentStorageAccountName')), '2019-06-01').keys[0].value,';EndpointSuffix=','core.windows.net')]"
+                        },
+                        {
+                            "name": "WEBSITE_CONTENTAZUREFILECONNECTIONSTRING",
+                            "value": "[concat('DefaultEndpointsProtocol=https;AccountName=',parameters('contentStorageAccountName'),';AccountKey=',listKeys(resourceId('Microsoft.Storage/storageAccounts', parameters('contentStorageAccountName')), '2019-06-01').keys[0].value,';EndpointSuffix=','core.windows.net')]"
+                        },
+                        {
+                            "name": "WEBSITE_CONTENTSHARE",
+                            "value": "[toLower(parameters('fileShareName'))]"
+                        },
+                        {
+                            "name": "APP_KIND",
+                            "value": "workflowApp"
+                        },
+                        {
+                            "name": "WEBSITE_VNET_ROUTE_ALL",
+                            "value": "1"
+                        },
+                        
+                        {
+                            "name": "AzureFunctionsJobHost__extensionBundle__id",
+                            "value": "Microsoft.Azure.Functions.ExtensionBundle.Workflows",
+                            "slotSetting": false
+                        },
+                        {
+                            "name": "AzureFunctionsJobHost__extensionBundle__version",
+                            "value": "[1.*, 2.0.0)",
+                            "slotSetting": false
+                        },
+                        {
+                            "name": "WEBSITE_CONTENTOVERVNET",
+                            "value": "1",
+                            "slotSetting": false
+                        }
+                    ],
+                    "use32BitWorkerProcess": "[parameters('use32BitWorkerProcess')]",
+                    "cors": {
+                        "allowedOrigins": [
+                            "https://afd.hosting.portal.azure.net",
+                            "https://afd.hosting-ms.portal.azure.net",
+                            "https://hosting.portal.azure.net",
+                            "https://ms.hosting.portal.azure.net",
+                            "https://ema-ms.hosting.portal.azure.net",
+                            "https://ema.hosting.portal.azure.net",
+                            "https://ema.hosting.portal.azure.net"
+                        ]
+                    }
+                },
+                "serverFarmId": "[resourceId('Microsoft.Web/serverfarms/', parameters('hostingPlanFEName'))]",
+                "clientAffinityEnabled": true
+            },
+            "resources": [
+                {
+                    "type": "networkconfig",
+                    "apiVersion": "2018-11-01",
+                    "name": "virtualNetwork",
+                    "location": "[parameters('location')]",
+                    "dependsOn": [
+                        "[parameters('logicAppFEname')]"
+                    ],
+                  "properties": {
+                    "subnetResourceId": "[parameters('subnetName')]",
+                    "swiftSupported": true
+                  }
+                }
+            ]
+        }
+
+    ]
+}
